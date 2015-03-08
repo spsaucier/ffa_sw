@@ -1,0 +1,54 @@
+---
+name: vehicles
+url: /vehicles/:id?p=
+controller: VehiclesCtrl
+---
+<div class="grid-content vehicle" class="vehicle" ng-show="vehicle">
+	<h1>{{vehicle.name | capitalize}}</h1>
+	<hr>
+	<dl>
+		<dt>Model</dt>
+		<dd>{{vehicle.model | capitalize}}</dd>
+		<dt>Vehicle Class</dt>
+		<dd>{{vehicle.vehicle_class | capitalize}}</dd>
+		<dt>Manufacturer</dt>
+		<dd>{{vehicle.manufacturer | capitalize}}</dd>
+		<dt>Cost</dt>
+		<dd>{{vehicle.cost_in_credits}} credits</dd>
+		<dt>Max Speed in Atmosphere</dt>
+		<dd>{{vehicle.max_atmosphering_speed}}</dd>
+		<dt>Length</dt>
+		<dd>{{vehicle.length}} meters</dd>
+		<dt>Crew</dt>
+		<dd>{{vehicle.crew}}</dd>
+		<dt>Passengers</dt>
+		<dd>{{vehicle.passengers}}</dd>
+		<dt>Cargo Capacity</dt>
+		<dd>{{vehicle.cargo_capacity}} kg</dd>
+		<dt>Consumables</dt>
+		<dd>{{vehicle.consumables}}</dd>
+		<dt>Films</dt>
+		<dd ng-repeat="film in vehicle.films" ui-sref="films({ id:(film | lastdir), p:''})">
+			<span get-prop prop="'title'" url="film">{{film}}</span>
+		</dd>
+		<dt ng-show="vehicle.pilots[0]">Pilots</dt>
+		<dd ng-repeat="pilot in vehicle.pilots" ui-sref="people({ id:(pilot | lastdir), p:''})">
+			<span get-prop prop="'name'" url="pilot">{{pilot}}</span>
+		</dd>
+	</dl>
+</div>
+
+
+<div class="grid-content vehicles" class="vehicles" ng-show="vehicles">
+	<a class="button pagination" ng-show="prevPage" ui-sref="vehicles({ p: prevPage })">Back to Page {{prevPage}}</a>
+
+	<div class="grid-content shrink">
+		<ul class="menu-bar vertical">
+			<li ng-repeat="vehicle in vehicles.results">
+		        <a ui-sref="vehicles({ id:( vehicle.url | lastdir ), p:'' })">{{vehicle.name | capitalize}}</a>
+		    </li>
+		</ul>
+	</div>
+
+	<a class="button pagination" ng-show="nextPage" ui-sref="vehicles({ p: nextPage })">To Page {{nextPage}}</a>
+</div>

@@ -1,0 +1,56 @@
+---
+name: people
+url: /people/:id?p=
+controller: PeopleCtrl
+---
+<div class="grid-content person" class="person" ng-show="person">
+	<h1>{{person.name | capitalize}}</h1>
+	<hr>
+	<dl>
+		<dt>Birth Year</dt>
+		<dd>{{person.birth_year | capitalize}}</dd>
+		<dt>Gender</dt>
+		<dd>{{person.gender | capitalize}}</dd>
+		<dt>Height</dt>
+		<dd>{{person.height}} meters</dd>
+		<dt>Mass</dt>
+		<dd>{{person.mass}} kg</dd>
+		<dt>Hair Color</dt>
+		<dd>{{person.hair_color | capitalize}}</dd>
+		<dt>Skin Color</dt>
+		<dd>{{person.skin_color | capitalize}}</dd>
+		<dt>Eye Color</dt>
+		<dd>{{person.eye_color | capitalize}}</dd>
+		<dt>Species</dt>
+		<dd ng-repeat="specie in person.species" ui-sref="species({ id:(specie | lastdir), p:''})">
+			<span get-prop prop="'name'" url="specie">{{specie}}</span>
+		</dd>
+		<dt>Films</dt>
+		<dd ng-repeat="film in person.films" ui-sref="films({ id:(film | lastdir), p:''})">
+			<span get-prop prop="'title'" url="film">{{film}}</span>
+		</dd>
+		<dt ng-show="person.starships[0]">Starships</dt>
+		<dd ng-repeat="starship in person.starships" ui-sref="starships({ id:(starship | lastdir), p:''})">
+			<span get-prop prop="'name'" url="starship">{{starship}}</span>
+		</dd>
+		<dt ng-show="person.vehicles[0]">Vehicles</dt>
+		<dd ng-repeat="vehicle in person.vehicles" ui-sref="vehicles({ id:(vehicle | lastdir), p:''})">
+			<span get-prop prop="'name'" url="vehicle">{{vehicle}}</span>
+		</dd>
+	</dl>
+</div>
+
+
+<div class="grid-content people" class="people" ng-show="people">
+	<a class="button pagination" ng-show="prevPage" ui-sref="people({ p: prevPage })">Back to Page {{prevPage}}</a>
+
+	<div class="grid-content shrink">
+		<ul class="menu-bar vertical">
+			<li ng-repeat="person in people.results">
+		        <a ui-sref="people({ id:( person.url | lastdir ), p:'' })">{{person.name | capitalize}}</a>
+		    </li>
+		</ul>
+	</div>
+
+	<a class="button pagination" ng-show="nextPage" ui-sref="people({ p: nextPage })">To Page {{nextPage}}</a>
+</div>

@@ -1,0 +1,54 @@
+---
+name: species
+url: /species/:id?p=
+controller: SpeciesCtrl
+---
+<div class="grid-content specie" class="specie" ng-show="specie">
+	<h1>{{specie.name | capitalize}}</h1>
+	<hr>
+	<dl>
+		<dt>Classification</dt>
+		<dd>{{specie.classification | capitalize}}</dd>
+		<dt>Designation</dt>
+		<dd>{{specie.designation | capitalize}}</dd>
+		<dt>Homeworld</dt>
+		<dd ng-repeat="planet in specie.homeworld" ui-sref="planets({ id:(planet | lastdir), p:''})">
+			<span get-prop prop="'name'" url="planet"></span>
+		</dd>
+		<dt>Language</dt>
+		<dd>{{specie.language | capitalize}}</dd>
+		<dt>Average Height</dt>
+		<dd>{{specie.average_height | capitalize}} meters</dd>
+		<dt>Average Lifespan</dt>
+		<dd>{{specie.average_lifespan | capitalize}} years</dd>
+		<dt>Skin Colors</dt>
+		<dd>{{specie.skin_colors | capitalize}}</dd>
+		<dt>Hair Colors</dt>
+		<dd>{{specie.hair_colors | capitalize}}</dd>
+		<dt>Eye Colors</dt>
+		<dd>{{specie.eye_colors | capitalize}}</dd>
+		<dt>Characters</dt>
+		<dd ng-repeat="person in specie.people" ui-sref="people({ id:(person | lastdir), p:''})">
+			<span get-prop prop="'name'" url="person">{{person}}</span>
+		</dd>
+		<dt>Films</dt>
+		<dd ng-repeat="film in specie.films" ui-sref="films({ id:(film | lastdir), p:''})">
+			<span get-prop prop="'title'" url="film">{{film}}</span>
+		</dd>
+	</dl>
+</div>
+
+
+<div class="grid-content species" class="species" ng-show="species">
+	<a class="button pagination" ng-show="prevPage" ui-sref="species({ p: prevPage })">Back to Page {{prevPage}}</a>
+
+	<div class="grid-content shrink">
+		<ul class="menu-bar vertical">
+			<li ng-repeat="specie in species.results">
+		        <a ui-sref="species({ id:( specie.url | lastdir ), p:'' })">{{specie.name | capitalize}}</a>
+		    </li>
+		</ul>
+	</div>
+
+	<a class="button pagination" ng-show="nextPage" ui-sref="species({ p: nextPage })">To Page {{nextPage}}</a>
+</div>

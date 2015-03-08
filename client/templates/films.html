@@ -1,0 +1,52 @@
+---
+name: films
+url: /films/:id?p=
+controller: FilmsCtrl
+---
+<div class="grid-content film" class="film" ng-show="film" ng-init="crawl = 'false'">
+	<h1>Episode {{film.episode_id | uppercase}}: {{film.title}}</h1>
+	<hr>
+	<dl>
+		<dt>Opening Crawl</dt>
+		<dd ng-class="{'crawl':crawl === true}" ng-click="crawl === true ? crawl = false : crawl = true">{{film.opening_crawl}}</dd>
+		<dt>Director</dt>
+		<dd>{{film.director | capitalize}}</dd>
+		<dt>Producer</dt>
+		<dd>{{film.producer | capitalize}}</dd>
+		<dt>Characters</dt>
+		<dd ng-repeat="character in film.characters" ui-sref="people({ id:(character | lastdir), p:''})">
+			<span get-prop prop="'name'" url="character">{{character}}</span>
+		</dd>
+		<dt>Planets</dt>
+		<dd ng-repeat="planet in film.planets" ui-sref="planets({ id:(planet | lastdir), p:''})">
+			<span get-prop prop="'name'" url="planet">{{planet}}</span>
+		</dd>
+		<dt>Species</dt>
+		<dd ng-repeat="specie in film.species" ui-sref="species({ id:(specie | lastdir), p:''})">
+			<span get-prop prop="'name'" url="specie">{{specie}}</span>
+		</dd>
+		<dt>Starships</dt>
+		<dd ng-repeat="starship in film.starships" ui-sref="starships({ id:(starship | lastdir), p:''})">
+			<span get-prop prop="'name'" url="starship">{{starship}}</span>
+		</dd>
+		<dt>Vehicles</dt>
+		<dd ng-repeat="vehicle in film.vehicles" ui-sref="vehicles({ id:(vehicle | lastdir), p:''})">
+			<span get-prop prop="'name'" url="vehicle">{{vehicle}}</span>
+		</dd>
+	</dl>
+</div>
+
+
+<div class="grid-content films" class="films" ng-show="films">
+	<a class="button pagination" ng-show="prevPage" ui-sref="films({ p: prevPage })">Back to Page {{prevPage}}</a>
+
+	<div class="grid-content shrink">
+		<ul class="menu-bar vertical">
+			<li ng-repeat="film in films.results">
+		        <a ui-sref="films({ id:( film.url | lastdir ), p:'' })">{{film.title | capitalize}}</a>
+		    </li>
+		</ul>
+	</div>
+
+	<a class="button pagination" ng-show="nextPage" ui-sref="films({ p: nextPage })">To Page {{nextPage}}</a>
+</div>

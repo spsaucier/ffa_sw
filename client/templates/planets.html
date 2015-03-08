@@ -1,0 +1,50 @@
+---
+name: planets
+url: /planets/:id?p=
+controller: PlanetsCtrl
+---
+<div class="grid-content planet" class="planet" ng-show="planet">
+	<h1>{{planet.name | capitalize}}</h1>
+	<hr>
+	<dl>
+		<dt>Rotation Period</dt>
+		<dd>{{planet.rotation_period | capitalize}} hours</dd>
+		<dt>Orbital Period</dt>
+		<dd>{{planet.orbital_period | capitalize}} days</dd>
+		<dt>Diameter</dt>
+		<dd>{{planet.diameter | capitalize}} km</dd>
+		<dt>Climate</dt>
+		<dd>{{planet.climate | capitalize}}</dd>
+		<dt>Gravity</dt>
+		<dd>{{planet.gravity | capitalize}} Gs</dd>
+		<dt>Terrain</dt>
+		<dd>{{planet.terrain | capitalize}}</dd>
+		<dt>Surface Water</dt>
+		<dd>{{planet.surface_water | capitalize}}%</dd>
+		<dt>Population</dt>
+		<dd>{{planet.population | capitalize}}</dd>
+		<dt>Films</dt>
+		<dd ng-repeat="film in planet.films" ui-sref="films({ id:(film | lastdir), p:''})">
+			<span get-prop prop="'title'" url="film">{{film}}</span>
+		</dd>
+		<dt ng-show="planet.residents[0]">Residents</dt>
+		<dd ng-repeat="person in planet.residents" ui-sref="people({ id:(person | lastdir), p:''})">
+			<span get-prop prop="'name'" url="person">{{person}}</span>
+		</dd>
+	</dl>
+</div>
+
+
+<div class="grid-content planets" class="planets" ng-show="planets">
+	<a class="button pagination" ng-show="prevPage" ui-sref="planets({ p: prevPage })">Back to Page {{prevPage}}</a>
+
+	<div class="grid-content shrink">
+		<ul class="menu-bar vertical">
+			<li ng-repeat="planet in planets.results">
+		        <a ui-sref="planets({ id:( planet.url | lastdir ), p:'' })">{{planet.name | capitalize}}</a>
+		    </li>
+		</ul>
+	</div>
+
+	<a class="button pagination" ng-show="nextPage" ui-sref="planets({ p: nextPage })">To Page {{nextPage}}</a>
+</div>
