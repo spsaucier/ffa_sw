@@ -1,6 +1,6 @@
 {
-  "name": "foundation-apps-template",
-  "version": "1.0.3",
+  "name": "ffa_sw",
+  "version": "1.0.4",
   "scripts": {
     "start": "gulp"
   },
@@ -19,5 +19,8 @@
     "run-sequence": "^1.0.2",
     "through2": "^0.6.3"
   },
-  "private": true
+  "private": true,
+  "_aerobatic": {
+    "appId": "7ykUWY6d"
+  }
 }

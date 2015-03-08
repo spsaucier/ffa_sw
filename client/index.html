@@ -3,28 +3,52 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation for Apps</title>
+    <title>Star Wars Compendium using Foundation for Apps</title>
     <link href="/assets/css/app.css" rel="stylesheet" type="text/css">
+    <script src="//use.typekit.net/nqg3nxr.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
     <script src="/assets/js/foundation.js"></script>
     <script src="/assets/js/routes.js"></script>
     <script src="/assets/js/app.js"></script>
   </head>
   <body>
+    <zf-offcanvas position="left" id="menu">
+      <a zf-close="" class="close-button">×</a>
+      <h2>Star Wars Compendium</h2>
+      <ul class="primary condense menu-bar vertical">
+        <li ui-sref-active="is-active"><a ui-sref="home">Home</a></li>
+        <li ui-sref-active="is-active"><a ui-sref="films">Films</a></li>
+        <li ui-sref-active="is-active"><a ui-sref="species">Species</a></li>
+        <li ui-sref-active="is-active"><a ui-sref="planets">Planets</a></li>
+        <li ui-sref-active="is-active"><a ui-sref="people">People</a></li>
+        <li ui-sref-active="is-active"><a ui-sref="starships">Starships</a></li>
+        <li ui-sref-active="is-active"><a ui-sref="vehicles">Vehicles</a></li>
+      </ul>
+    </zf-offcanvas>
     <div class="grid-frame vertical">
       <div class="grid-content shrink" style="padding: 0;">
-        <ul class="primary condense menu-bar">
-          <li><a><strong>Foundation for Apps</strong></a></li>
-          <li><a ui-sref="home">Home</a></li>
-          <li><a ui-sref="home">About</a></li>
-          <li><a ui-sref="home">News</a></li>
-          <li><a ui-sref="home">Contact</a></li>
-        </ul>
-      </div>
-      <div class="grid-content">
-        <div class="grid-container">
-          <div ng-class="['ui-animation']" ui-view></div>
+        <div class="menu-group">
+          <div class="menu-group-left">
+            <ul class="primary condense menu-bar">
+              <li class="show-small"><a class="offcanvas-toggle" zf-hard-toggle="menu">&equiv;</a></li>
+              <li class="show-all" ui-sref-active="is-active"><a ui-sref="home"><strong>Star Wars Compendium</strong></a></li>
+              <li ui-sref-active="is-active"><a ui-sref="films">Films</a></li>
+              <li ui-sref-active="is-active"><a ui-sref="species">Species</a></li>
+              <li ui-sref-active="is-active"><a ui-sref="planets">Planets</a></li>
+              <li ui-sref-active="is-active"><a ui-sref="people">People</a></li>
+              <li ui-sref-active="is-active"><a ui-sref="starships">Starships</a></li>
+              <li ui-sref-active="is-active"><a ui-sref="vehicles">Vehicles</a></li>
+            </ul>
+          </div>
+          <div class="menu-group-right shrink">
+            <ul class="menu-bar primary">
+              <li><a href="http://stephensaucier.com">by stevo</a></li>
+            </ul>
+          </div>
         </div>
       </div>
+      <base href="/"/>
+      <div ng-class="['ui-animation']" class="grid-frame vertical fadeIn easeInOut" ui-view ></div>
     </div>
   </body>
 </html>

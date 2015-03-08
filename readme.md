@@ -1,6 +1,6 @@
-# Foundation for Apps Template
+# Star Wars Compendium using Foundation for Apps
 
-This is the default template project for Foundation for Apps. It's powered by Node, Gulp, Angular, and libsass. It provides you with a basic template to get started with Angular and Foundation for Apps. If you're already an Angular developer, you may instead want to install the components into your own stack using Bower: `bower install foundation-apps`
+This is a single-page app using for Foundation for Apps and a RESTful Star Wars API. It's powered by Node, Gulp, Angular, and libsass. 
 
 ## Requirements
 
@@ -18,7 +18,7 @@ You'll need the following software installed to get started.
 Clone this repository, where `app` is the name of your app.
 
 ```bash
-git clone https://github.com/zurb/foundation-apps-template.git app
+git clone https://github.com/spsaucier/ffa_sw.git app
 ```
 
 Change into the directory.

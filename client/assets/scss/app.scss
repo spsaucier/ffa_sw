@@ -1,2 +1,210 @@
 @import "settings";
 @import "foundation";
+
+.off-canvas ~ .grid-frame,
+.off-canvas {
+	background: $secondary-color;
+}
+
+.menu-group {
+	background: $primary-color;
+	@include breakpoint(medium) {
+		li.show-small {
+			display: none;
+		}
+	}
+	@include breakpoint(medium down) {
+		li {
+			display: none;
+		}
+		li.show-small,
+		li.show-all {
+			display: flex;
+		}
+	}
+	.menu-bar > li > a.offcanvas-toggle {
+		font-size: 34px;
+		padding: 0 14px;
+	}
+}
+
+.off-canvas {
+	overflow: auto;
+	h2 {
+		font-size: 2.125rem;
+		line-height: 1;
+		padding: 0 .7rem;
+	}
+	.menu-bar.vertical {
+		margin: 0;
+		&> li {
+			&> a {
+				font-size: 24px;
+				padding: 17px 0;
+				color: #222;
+				&:hover {
+					background: #000;
+					color: #fff;
+				}
+			}
+			&.is-active > a {
+				color: #fff;
+			}
+		}
+	}
+}
+
+h1 {
+	line-height: 1;
+	padding: .2em 0;
+	@media screen and (max-width: 500px) {
+		font-size: 3.375rem;
+	}
+	@media screen and (max-width: 390px) {
+		font-size: 2.5rem;
+	}
+}
+
+.menu-bar.condense {
+	text-transform: uppercase;
+	.is-active > a {
+		font-weight: 900;
+		background: #343434;
+	}
+}
+
+.menu-group {
+	background: $primary-color;
+	@include breakpoint(medium) {
+		li.show-small {
+			display: none;
+		}
+	}
+	@include breakpoint(medium down) {
+		li {
+			display: none;
+		}
+		li.show-small,
+		li.show-all {
+			display: flex;
+		}
+	}
+}
+
+.button.pagination {
+	font-size: 30px;
+	margin: 0;
+	line-height: 1;
+	font-weight: bold;
+	width: 100%;
+}
+
+.menu-bar.vertical {
+	background: none;
+	margin: 0 -1rem;
+	&> li {
+		&> a {
+			font-weight: bold;
+			font-size: 40px;
+			text-align: center;
+			display: block;
+			padding: 27px 0;
+			font-family: $header-font-family;
+			transition: .2s all ease-out;
+			-webkit-text-overflow: ellipsis;
+			text-overflow: ellipsis;
+			&:hover {
+				background: #000;
+				color: #fff;
+			}
+		}
+	}
+}
+
+hr {
+	border: 1px dashed #000;
+}
+
+dt, dd {
+	display: block;
+	float: left;
+	margin-top: 0;
+}
+dt {
+	clear: both;
+	text-transform: uppercase;
+	font-size: .8em;
+	line-height: 2.2em;
+	&::after {
+		content: ":";
+	}
+}
+dd {
+	margin-left: 1.3em;
+	&[href] {
+		display: inline-block;
+		position: relative;
+		&::after {
+			content: '';
+			display: block;
+			width: 100%;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			border-bottom: 1px dotted;
+			transition: .2s all ease-out;
+		}
+		&:hover::after {
+			border-bottom: 2px dashed;
+		}
+	}
+}
+
+.home-list {
+	margin: 0;
+	list-style: none;
+	li {
+		float: left;
+		width: 33%;
+		clear: none;
+		text-align: center;
+		margin-bottom: .5%;
+		margin-right: .5%;
+		&:nth-child(3n) {
+			margin-right: 0;
+		}
+		a {
+			display: block;
+			font-size: 24px;
+			line-height: 10;
+			text-transform: uppercase;
+			font-weight: 900;
+			background: $primary-color;
+			color: #fff;
+			@media screen and (max-width: 400px) {
+				font-size: 16px;
+			}
+			&:hover {
+				color: $secondary-color;
+			}
+		}
+	}
+}
+
+.crawl {
+	white-space: pre-wrap;
+}
+
+.grid-content {
+	&.films,
+	&.species,
+	&.planets,
+	&.people,
+	&.starships,
+	&.vehicles {
+		margin: 0 -1rem;
+		&> * {
+			width: calc( 100% + 1rem );
+		}
+	}
+}
