@@ -126,8 +126,10 @@
 
             $scope[single] = data;
 
+            var name = data.name;
+            if (single == 'film') name = data.title;
             // Get an image from a Google Custom Search (this API key only works on localhost & aerobaticapp.com)
-            var googleUrl = 'https://www.googleapis.com/customsearch/v1?cx=001000040755652345309%3Aosltt3fexvk&q='+encodeURIComponent(data.name)+'&imgSize=large&num=1&fileType=jpg&key=AIzaSyBDvUGYCJfOyTNoJzk-5P9vE-dllx-Wne4',
+            var googleUrl = 'https://www.googleapis.com/customsearch/v1?cx=001000040755652345309%3Aosltt3fexvk&q='+encodeURIComponent(name)+'&imgSize=large&num=1&fileType=jpg&key=AIzaSyBDvUGYCJfOyTNoJzk-5P9vE-dllx-Wne4',
               googleParams = { cache: true };
 
             if (window.location.hostname.match('aerobaticapp')) {
