@@ -63,7 +63,11 @@ h1 {
 	@media screen and (max-width: 390px) {
 		font-size: 2.5rem;
 	}
+	&+ img {
+		border: 8px #000 solid;
+	}
 }
+
 
 .menu-bar.condense {
 	text-transform: uppercase;

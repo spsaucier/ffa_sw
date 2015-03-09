@@ -45,6 +45,22 @@
       }
     }
   }])
+  .directive("getImage", ['$http', function($http) {
+    return {
+      template: "{{imageUrl}}",
+      scope: {
+        subject: "="
+      },
+      link: function(scope, element, attrs) {
+        $http.get('https://www.googleapis.com/customsearch/v1?cx=001000040755652345309%3Aosltt3fexvk&q='+encodeURIComponent(scope.subject)+'&imgSize=large&num=1&fileType=jpg&key=AIzaSyBDvUGYCJfOyTNoJzk-5P9vE-dllx-Wne4', { cache: true }).then(function(result) {
+          console.info(result.data);
+          scope.imageUrl = result.data.items[0].pagemap.cse_image.src;
+        }, function(err) {
+          scope.imageUrl = "Unknown";
+        });
+      }
+    }
+  }])
   .filter('capitalize', function() {
     return function (input) {
       return (!!input) ? input.replace(/([^\W_]+[^\s-]*) */g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1)}) : '';
@@ -91,6 +107,13 @@
             if (data.homeworld) data.homeworld = [data.homeworld];
 
             $scope[single] = data;
+
+            // Get an image from a Google Custom Search (this API key only works on localhost & aerobaticapp.com)
+            $http.get('https://www.googleapis.com/customsearch/v1?cx=001000040755652345309%3Aosltt3fexvk&q='+encodeURIComponent(data.name)+'&imgSize=large&num=1&fileType=jpg&key=AIzaSyBDvUGYCJfOyTNoJzk-5P9vE-dllx-Wne4', { cache: true }).then(function(result) {
+              $scope.imageUrl = result.data.items[0].pagemap.cse_image[0].src;
+            }, function(err) {
+              $scope.imageUrl = "Unknown";
+            });
           })
 
       } else {

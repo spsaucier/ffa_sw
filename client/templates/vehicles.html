@@ -5,6 +5,7 @@ controller: VehiclesCtrl
 ---
 <div class="grid-content vehicle" class="vehicle" ng-show="vehicle">
 	<h1>{{vehicle.name | capitalize}}</h1>
+	<img ng-show="imageUrl != 'Unknown'" src="{{imageUrl}}" alt="">
 	<hr>
 	<dl>
 		<dt>Model</dt>

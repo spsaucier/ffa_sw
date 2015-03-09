@@ -5,6 +5,7 @@ controller: StarshipsCtrl
 ---
 <div class="grid-content starship" class="starship" ng-show="starship">
 	<h1>{{starship.name | capitalize}}</h1>
+	<img ng-show="imageUrl != 'Unknown'" src="{{imageUrl}}" alt="">
 	<hr>
 	<dl>
 		<dt>Model</dt>
